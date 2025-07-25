@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        @font-face {
+            font-family: muli-regular;
+            src: url(../fonts/muli/Muli-Regular.ttf)
+        }
+
+        @font-face {
+            font-family: muli-semibold;
+            src: url(../fonts/muli/Muli-SemiBold.ttf)
+        }
+
+        @font-face {
+            font-family: muli-bold;
+            src: url(../fonts/muli/Muli-Bold.ttf)
+        }
+
+        * {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box
+        }
+
+        body {
+            font-family: muli-regular;
+            color: #666;
+            font-size: 13px;
+            margin: 0
+        }
+
+        input,
+        textarea,
+        select,
+        button {
+            font-family: muli-regular;
+            color: #333;
+            font-size: 13px
+        }
+
+        p,h1,h2,h3,h4,h5,h6,ul {
+            margin: 0
+        }
+
+        img {
+            max-width: 100%
+        }
+
+        ul {
+            padding-left: 0;
+            margin-bottom: 0
+        }
+
+        a:hover {
+            text-decoration: none
+        }
+
+        :focus {
+            outline: none
+        }
+
+        .wrapper {
+            min-height: 100vh;
+            background-size: cover;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: center
+        }
+
+        .inner {
+            min-width: 850px;
+            margin: auto;
+            padding-top: 68px;
+            padding-bottom: 48px;
+            background: url(../images/registration-form-2.jpg)
+        }
+
+        .inner h3 {
+            text-transform: uppercase;
+            font-size: 22px;
+            font-family: muli-bold;
+            text-align: center;
+            margin-bottom: 32px;
+            color: #333;
+            letter-spacing: 2px
+        }
+
+        form {
+            width: 50%;
+            padding-left: 45px
+        }
+
+        .form-group {
+            display: flex
+        }
+
+        .form-group .form-wrapper {
+            width: 50%
+        }
+
+        .form-group .form-wrapper:first-child {
+            margin-right: 20px
+        }
+
+        .form-wrapper {
+            margin-bottom: 17px
+        }
+
+        .form-wrapper label {
+            margin-bottom: 9px;
+            display: block
+        }
+
+        .form-control {
+            border: 1px solid #ccc;
+            display: block;
+            width: 100%;
+            height: 40px;
+            padding: 0 20px;
+            border-radius: 20px;
+            font-family: muli-bold;
+            background: 0 0
+        }
+
+        .form-control:focus {
+            border: 1px solid #ae3c33
+        }
+
+        select {
+            -moz-appearance: none;
+            -webkit-appearance: none;
+            cursor: pointer;
+            padding-left: 20px
+        }
+
+        select option[value=""][disabled] {
+            display: none
+        }
+
+        button {
+            border: none;
+            width: 152px;
+            height: 40px;
+            margin: auto;
+            margin-top: 29px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            background: #ae3c33;
+            font-size: 13px;
+            color: #fff;
+            text-transform: uppercase;
+            font-family: muli-semibold;
+            border-radius: 20px;
+            overflow: hidden;
+            -webkit-transform: perspective(1px) translateZ(0);
+            transform: perspective(1px) translateZ(0);
+            box-shadow: 0 0 1px transparent;
+            position: relative;
+            -webkit-transition-property: color;
+            transition-property: color;
+            -webkit-transition-duration: .5s;
+            transition-duration: .5s
+        }
+
+        button:before {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: #f11a09;
+            -webkit-transform: scaleX(0);
+            transform: scaleX(0);
+            -webkit-transform-origin: 0 50%;
+            transform-origin: 0 50%;
+            -webkit-transition-property: transform;
+            transition-property: transform;
+            -webkit-transition-duration: .5s;
+            transition-duration: .5s;
+            -webkit-transition-timing-function: ease-out;
+            transition-timing-function: ease-out
+        }
+
+        button:hover:before {
+            -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+            -webkit-transition-timing-function: cubic-bezier(.52, 1.64, .37, .66);
+            transition-timing-function: cubic-bezier(.52, 1.64, .37, .66)
+        }
+
+        .checkbox {
+            position: relative
+        }
+
+        .checkbox label {
+            padding-left: 22px;
+            cursor: pointer
+        }
+
+        .checkbox input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer
+        }
+
+        .checkbox input:checked~.checkmark:after {
+            display: block
+        }
+
+        .checkmark {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            height: 12px;
+            width: 13px;
+            border-radius: 2px;
+            background-color: #ebebeb;
+            border: 1px solid #ccc;
+            font-family: Material-Design-Iconic-Font;
+            color: #000;
+            font-size: 10px;
+            font-weight: bolder
+        }
+
+        .checkmark:after {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+            content: '\f26b'
+        }
+
+        @media(max-width:991px) {
+            .inner {
+                min-width: 768px
+            }
+        }
+
+        @media(max-width:767px) {
+            .inner {
+                min-width: auto;
+                background: 0 0;
+                padding-top: 0;
+                padding-bottom: 0
+            }
+
+            form {
+                width: 100%;
+                padding-right: 15px;
+                padding-left: 15px
+            }
+        }
+    </style>
+    <meta charset="utf-8">
+    <title>RegistrationForm_v2 by Colorlib</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
+
+    <link rel="stylesheet" href="css/style.css">
+    <meta name="robots" content="noindex, follow">
+    <script nonce="3206e698-f17d-4dee-8a66-85a627b204f7">try { (function (w, d) { !function (o, p, q, r) { o[q] = o[q] || {}; o[q].executed = []; o.zaraz = { deferred: [], listeners: [] }; o.zaraz.q = []; o.zaraz._f = function (s) { return async function () { var t = Array.prototype.slice.call(arguments); o.zaraz.q.push({ m: s, a: t }) } }; for (const u of ["track", "set", "debug"]) o.zaraz[u] = o.zaraz._f(u); o.zaraz.init = () => { var v = p.getElementsByTagName(r)[0], w = p.createElement(r), x = p.getElementsByTagName("title")[0]; x && (o[q].t = p.getElementsByTagName("title")[0].text); o[q].x = Math.random(); o[q].w = o.screen.width; o[q].h = o.screen.height; o[q].j = o.innerHeight; o[q].e = o.innerWidth; o[q].l = o.location.href; o[q].r = p.referrer; o[q].k = o.screen.colorDepth; o[q].n = p.characterSet; o[q].o = (new Date).getTimezoneOffset(); if (o.dataLayer) for (const B of Object.entries(Object.entries(dataLayer).reduce(((C, D) => ({ ...C[1], ...D[1] })), {}))) zaraz.set(B[0], B[1], { scope: "page" }); o[q].q = []; for (; o.zaraz.q.length;) { const E = o.zaraz.q.shift(); o[q].q.push(E) } w.defer = !0; for (const F of [localStorage, sessionStorage]) Object.keys(F || {}).filter((H => H.startsWith("_zaraz_"))).forEach((G => { try { o[q]["z_" + G.slice(7)] = JSON.parse(F.getItem(G)) } catch { o[q]["z_" + G.slice(7)] = F.getItem(G) } })); w.referrerPolicy = "origin"; w.src = "/cdn-cgi/zaraz/s.js?z=" + btoa(encodeURIComponent(JSON.stringify(o[q]))); v.parentNode.insertBefore(w, v) };["complete", "interactive"].includes(p.readyState) ? zaraz.init() : o.addEventListener("DOMContentLoaded", zaraz.init) }(w, d, "zarazData", "script"); })(window, document) } catch (err) {
+            console.error('Failed to run Cloudflare Zaraz: ', err)
+            fetch('/cdn-cgi/zaraz/t', {
+                credentials: 'include',
+                keepalive: true,
+                method: 'GET',
+            })
+        };</script>
+</head>
+
+<body>
+    <div class="wrapper" style="background-image: url('images/bg-registration-form-2.jpg');">
+        <div class="inner">
+            <form action>
+                <h3>Registration Form</h3>
+                <div class="form-group">
+                    <div class="form-wrapper">
+                        <label for>First Name</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="form-wrapper">
+                        <label for>Last Name</label>
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="form-wrapper">
+                    <label for>Email</label>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="form-wrapper">
+                    <label for>Password</label>
+                    <input type="password" class="form-control">
+                </div>
+                <div class="form-wrapper">
+                    <label for>Confirm Password</label>
+                    <input type="password" class="form-control">
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox"> I caccept the Terms of Use & Privacy Policy.
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+                <button>Register Now</button>
+            </form>
+        </div>
+    </div>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-23581568-13');
+    </script>
+    <script defer
+        src="https://static.cloudflareinsights.com/beacon.min.js/v84a3a4012de94ce1a686ba8c167c359c1696973893317"
+        integrity="sha512-euoFGowhlaLqXsPWQ48qSkBSCFs3DPRyiwVu3FjR96cMPx+Fr+gpWRhIafcHwqwCqWS42RZhIudOvEI+Ckf6MA=="
+        data-cf-beacon='{"rayId":"847b9523e8a331ff","version":"2024.1.0","token":"cd0b4b3a733644fc843ef0b185f98241"}'
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
